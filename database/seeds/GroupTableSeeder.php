@@ -11,13 +11,14 @@ class GroupTableSeeder extends Seeder
      */
     public function run()
     {
+        DB::statement('SET FOREIGN_KEY_CHECKS=0');
         DB::table('groups')->truncate();
 
         // create array of insert batch
         $groups = [
         	['id' => 1, 'name' => 'Family', 'created_at' => new DateTime, 'updated_at' => new DateTime],
-        	['id' => 1, 'name' => 'Friends', 'created_at' => new DateTime, 'updated_at' => new DateTime],
-        	['id' => 1, 'name' => 'Clients', 'created_at' => new DateTime, 'updated_at' => new DateTime],
+        	['id' => 2, 'name' => 'Friends', 'created_at' => new DateTime, 'updated_at' => new DateTime],
+        	['id' => 3, 'name' => 'Clients', 'created_at' => new DateTime, 'updated_at' => new DateTime],
         ];
     
     	// insert the batch

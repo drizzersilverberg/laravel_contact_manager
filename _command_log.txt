@@ -26,11 +26,20 @@ php artisan make:seeder GroupTableSeeder
 
 c2. Edit Seeder file in database/seeds/GroupTableSeeder.php
 
+7. Create Contact Table Seeder:
 
-7. Make seeder for Group Table (see the dummy value in the database table):
+php artisan make:seeder ContactTableSeeder
 
-php artisan make:seeder GroupTableSeeder
+c3. Edit Seeder file in database/seeds/ContactTableSeeder.php
 
-8. Create Contact Table Seeder:
+c4. Register the Seeders in database/seeds/DatabaseSeeder.php
 
-php artisan make
+8. Seed to database (see the dummy values in the database tables):
+
+php artisan db:seed
+
+c5. Add group_id value in ContactTableSeeder.php
+
+9. Run again the seed with individual class:
+
+php artisan db:seed --class=ContactTableSeeder
