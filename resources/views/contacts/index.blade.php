@@ -37,13 +37,13 @@
 
     @endforeach
       
-    </table>  
+    </table>            
+  </div>
 
+  <div class="text-center">
     <nav>
-    	<!-- {!! $contacts->links() !!} -->
-      {!! $contacts->appends(Request::query())->render() !!}
+      {!! $contacts->appends( Request::query() )->render() !!}
     </nav>
-
-</div>
+  </div>
 
 @endsection

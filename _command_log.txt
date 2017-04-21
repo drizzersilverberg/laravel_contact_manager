@@ -62,3 +62,9 @@ php artisan make:model Contact
 c7. dumps data from model to view via ContactController.
 
 c8. Add Group Link in contacts/index.blade.php and group pagination fix. Filter request in contact controller.
+
+c9. Add create method in contact controller and the create view.
+
+13. Add Laravelcollective for Form:
+
+composer require "laravelcollective/html:5.2"

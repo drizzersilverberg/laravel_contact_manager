@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 
 use App\Contact;
+use App\Group;
 
 class ContactsController extends Controller
 {
@@ -21,5 +22,13 @@ class ContactsController extends Controller
     	}
     	
     	return view('contacts.index', compact('contacts'));
+    }
+
+    public function create(){
+        $groups = [];
+        foreach(Group::all() as $group) {
+            $groups[$group->id] = $group->name;
+        }
+        return view("contacts.create", compact('groups'));
     }
 }
