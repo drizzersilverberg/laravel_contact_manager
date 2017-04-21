@@ -1,0 +1,15 @@
+1. Run the server:
+
+php artisan serve
+
+2. Run the server with custom host and port (I failed to run this ...):
+
+php artisan serve --host=contactmanager.dev --port=1234 
+
+3. Create 'laravel_contact_manager' database in mysql server and install migration with this command:
+
+php artisan migrate:install
+
+4. Create Migration for contact table:
+
+php artisan make:migration create_groups_and_contacts_table --create=groups
