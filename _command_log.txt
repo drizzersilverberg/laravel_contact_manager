@@ -54,4 +54,7 @@ c6. add route for Contacts Controller
 
 php artisan route:list
 
-c7. 
+12. Make Group and Contact model:
+
+php artisan make:model Group
+php artisan make:model Contact
