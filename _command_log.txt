@@ -43,3 +43,15 @@ c5. Add group_id value in ContactTableSeeder.php
 9. Run again the seed with individual class:
 
 php artisan db:seed --class=ContactTableSeeder
+
+10. Create Contacts Controller:
+
+php artisan make:controller ContactsController
+
+c6. add route for Contacts Controller
+
+11. See the route list:
+
+php artisan route:list
+
+c7. 
