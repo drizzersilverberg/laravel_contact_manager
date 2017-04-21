@@ -60,3 +60,5 @@ php artisan make:model Group
 php artisan make:model Contact
 
 c7. dumps data from model to view via ContactController.
+
+c8. Add Group Link in contacts/index.blade.php and group pagination fix. Filter request in contact controller.

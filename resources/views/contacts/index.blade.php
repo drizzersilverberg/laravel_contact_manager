@@ -40,7 +40,8 @@
     </table>  
 
     <nav>
-    	{!! $contacts->links() !!}
+    	<!-- {!! $contacts->links() !!} -->
+      {!! $contacts->appends(Request::query())->render() !!}
     </nav>
 
 </div>

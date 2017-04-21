@@ -4,6 +4,11 @@
   <title></title>
 </head>
 <body>
-  @yield('content')
+	<a href="{{ route('contacts.index') }}">All Contacts</a>{{ App\Contact::count() }}
+	@foreach (App\Group::all() as $group)
+		<a href="{{ route('contacts.index', ['group_id' => $group->id]) }}"> {{ $group->name }} </a> {{ $group->contacts->count() }}
+	@endforeach
+
+	@yield('content')
 </body>
 </html>
