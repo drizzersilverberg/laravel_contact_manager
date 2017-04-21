@@ -13,3 +13,9 @@ php artisan migrate:install
 4. Create Migration for contact table:
 
 php artisan make:migration create_groups_and_contacts_table --create=groups
+
+c1. Edit migration file in database/migration/2017_***
+
+5. Migrate the migration:
+
+php artisan migrate

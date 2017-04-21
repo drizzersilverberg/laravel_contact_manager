@@ -21,7 +21,7 @@ class CreateGroupsAndContactsTable extends Migration
         Schema::create('contacts', function(Blueprint $table){
             $table->increments('id');
             $table->integer('group_id')->unsigned()->default(0);
-            $table->integer('group_id')->references('id')->on('groups')->onDelete('cascade');
+            $table->foreign('group_id')->references('id')->on('groups')->onDelete('cascade');
             $table->string('name');
             $table->string('company');
             $table->string('email');
