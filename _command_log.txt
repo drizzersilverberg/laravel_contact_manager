@@ -68,3 +68,5 @@ c9. Add create method in contact controller and the create view.
 13. Add Laravelcollective for Form:
 
 composer require "laravelcollective/html:5.2"
+
+c10. add the laravelcollective in provider and aliases array.
