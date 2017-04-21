@@ -58,3 +58,5 @@ php artisan route:list
 
 php artisan make:model Group
 php artisan make:model Contact
+
+c7. dumps data from model to view via ContactController.
