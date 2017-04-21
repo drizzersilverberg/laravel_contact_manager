@@ -14,8 +14,23 @@ php artisan migrate:install
 
 php artisan make:migration create_groups_and_contacts_table --create=groups
 
-c1. Edit migration file in database/migration/2017_***
+c1. Edit migration file in database/migration/2017_***.php
 
-5. Migrate the migration:
+5. Migrate the migration (see the new tables created in the database):
 
 php artisan migrate
+
+6. Create Group Table Seeder (a dummy data):
+
+php artisan make:seeder GroupTableSeeder
+
+c2. Edit Seeder file in database/seeds/GroupTableSeeder.php
+
+
+7. Make seeder for Group Table (see the dummy value in the database table):
+
+php artisan make:seeder GroupTableSeeder
+
+8. Create Contact Table Seeder:
+
+php artisan make
