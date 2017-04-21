@@ -31,4 +31,24 @@ class ContactsController extends Controller
         }
         return view("contacts.create", compact('groups'));
     }
+
+    public function store(Request $request){
+        
+        // create rules for validate in each variables
+        $rules = [
+            'name' => ['required', 'min:5'],
+            'company' => ['required'],
+            'email' => ['required', 'email']
+        ];
+
+        // validate request with rules
+        $this->validate($request, $rules);
+
+        // create to database
+        Contact::create($request->all());
+
+        // redirect
+        return redirect('contacts')->with('message','Contact Saved!');
+
+    }
 }
