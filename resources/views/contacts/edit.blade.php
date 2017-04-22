@@ -7,7 +7,7 @@
     <strong>Edit Contact</strong>
   </div>
 
-  {!! Form::model($contact, ['route' => ['contacts.update', $contact->id], 'method' => 'PATCH']) !!}
+  {!! Form::model($contact, ['files'=>true, 'route' => ['contacts.update', $contact->id], 'method' => 'PATCH']) !!}
 
   @include('contacts.form')
 

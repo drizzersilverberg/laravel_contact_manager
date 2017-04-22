@@ -18,8 +18,31 @@ class ContactsController extends Controller
     private $rules = [
             'name' => ['required', 'min:5'],
             'company' => ['required'],
-            'email' => ['required', 'email']
+            'email' => ['required', 'email'],
+            'photo' => ['mimes:jpg,jpeg,png,gif,bmp']
         ];
+
+    private function getRequest(Request $request){
+
+        // get all request data
+        $data = $request->all();
+
+        // check the photo if it is null
+        if($request->hasFile('photo')){
+            // get photo filename
+            $photo          = $request -> file('photo');
+            $fileName       = $photo ->getClientOriginalName();
+            // set path or destination 
+            $destination    = base_path() . '/public/uploads';
+            // move photo to destination
+            $photo -> move($destination, $fileName );
+
+            // assign photo to request data
+            $data['photo'] = $fileName;
+        }
+
+        return $data;
+    }
 
     public function index(Request $request){
     	if($group_id = ($request->get('group_id'))) {
@@ -40,15 +63,16 @@ class ContactsController extends Controller
         return view("contacts.create", compact('groups'));
     }
 
-    public function store(Request $request){
-        
-        
+    public function store(Request $request){  
 
         // validate request with rules
         $this->validate($request, $this->rules);
+        
+        // request data
+        $data = $this->getRequest($request);
 
         // create to database
-        Contact::create($request->all());
+        Contact::create($data);
 
         // redirect
         return redirect('contacts')->with('message','Contact Saved!');
@@ -69,11 +93,14 @@ class ContactsController extends Controller
         // validate request with rules
         $this->validate($request, $this->rules);
 
+        // request data
+        $data = $this->getRequest($request);
+
         // find data by id
         $contact = Contact::find($id);
 
         // update data 
-        $contact->update($request->all());
+        $contact->update($data);
 
         // redirect
         return redirect('contacts')->with('message','Contact Updated!');

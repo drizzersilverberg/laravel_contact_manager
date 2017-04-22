@@ -70,3 +70,15 @@ c9. Add create method in contact controller and the create view.
 composer require "laravelcollective/html:5.2"
 
 c10. add the laravelcollective in provider and aliases array.
+
+c11. check the git log, there are so much changes...
+
+14. Add migration for add photo field to contact table:
+
+php artisan make:migration add_photo_to_contacts_table --table=contacts
+
+c12. edit the migration file in database/migrations/2017_***.php
+
+15. Migrate it:
+
+php artisan migrate
