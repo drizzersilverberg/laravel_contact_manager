@@ -22,6 +22,8 @@ class ContactsController extends Controller
             'photo' => ['mimes:jpg,jpeg,png,gif,bmp']
         ];
 
+    private $upload_dir = '/public/uploads';
+
     private function getRequest(Request $request){
 
         // get all request data
@@ -33,7 +35,7 @@ class ContactsController extends Controller
             $photo          = $request -> file('photo');
             $fileName       = $photo ->getClientOriginalName();
             // set path or destination 
-            $destination    = base_path() . '/public/uploads';
+            $destination    = $this->upload_dir;
             // move photo to destination
             $photo -> move($destination, $fileName );
 
@@ -42,6 +44,18 @@ class ContactsController extends Controller
         }
 
         return $data;
+    }
+
+    private function removePhoto($photo){
+        if(!empty($photo)){
+            $file_path = $this->upload_dir . '/' . $photo;
+
+            if(file_exists($file_path)) unlink($file_path);
+        }
+    }
+
+    public function __construct(){
+        $this -> upload_dir = base_path() . '/' . $this->upload_dir;
     }
 
     public function index(Request $request){
@@ -93,17 +107,35 @@ class ContactsController extends Controller
         // validate request with rules
         $this->validate($request, $this->rules);
 
-        // request data
-        $data = $this->getRequest($request);
-
         // find data by id
         $contact = Contact::find($id);
+        $oldPhoto = $contact->photo;
+
+        // request data
+        $data = $this->getRequest($request);
 
         // update data 
         $contact->update($data);
 
+        if($oldPhoto !== $contact->photo){
+            $this->removePhoto($oldPhoto);
+        }
+
         // redirect
         return redirect('contacts')->with('message','Contact Updated!');
 
+    }
+
+    public function destroy($id){
+        // find contact by id
+        $contact = Contact::find($id);
+        // delete contact
+        $contact->delete();
+
+        // remove the related photo
+        $this -> removePhoto($contact);
+
+        // redirect
+        return redirect('contacts')->with('message','Contact Deleted!');
     }
 }

@@ -72,7 +72,7 @@
         <div class="col-md-4">
           <div class="fileinput fileinput-new" data-provides="fileinput">
             <div class="fileinput-new thumbnail" style="width: 150px; height: 150px;">
-              <img src="{{ empty($contact->photo) ? 'http://placehold.it/150x150' : "/uploads/{$contact->photo}"}}" alt="Photo">
+              <img src="http://placehold.it/150x150" alt="Photo">
             </div>
             <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 200px; max-height: 150px;"></div>
             <div class="text-center">
