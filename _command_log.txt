@@ -82,3 +82,11 @@ c12. edit the migration file in database/migrations/2017_***.php
 15. Migrate it:
 
 php artisan migrate
+
+c13. so many changes, check git log
+
+16. make GroupsController:
+
+php artisan make:controller GroupsController
+
+c14. make store method in GroupsController
