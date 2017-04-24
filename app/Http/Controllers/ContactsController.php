@@ -119,7 +119,11 @@ class ContactsController extends Controller
         foreach(Group::all() as $group) {
             $groups[$group->id] = $group->name;
         }
-        $contact = Contact::find($id);
+
+
+
+        $contact = Contact::findOrFail($id);
+        $this->authorize('modify', $contact);
         return view('contacts.edit', compact('contact','groups'));
     }
 
@@ -129,7 +133,8 @@ class ContactsController extends Controller
         $this->validate($request, $this->rules);
 
         // find data by id
-        $contact = Contact::find($id);
+        $contact = Contact::findOrFail($id);
+        $this->authorize('modify', $contact);
         $oldPhoto = $contact->photo;
 
         // request data
@@ -149,7 +154,8 @@ class ContactsController extends Controller
 
     public function destroy($id){
         // find contact by id
-        $contact = Contact::find($id);
+        $contact = Contact::findOrFail($id);
+        $this->authorize('modify', $contact);
         // delete contact
         $contact->delete();
 
