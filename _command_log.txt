@@ -90,3 +90,7 @@ c13. so many changes, check git log
 php artisan make:controller GroupsController
 
 c14. make store method in GroupsController
+
+17. create authentication that creates home controller:
+
+php artisan make:auth
